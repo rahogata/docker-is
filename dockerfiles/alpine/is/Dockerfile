@@ -92,10 +92,10 @@ RUN \
 # create Java prefs dir
 # this is to avoid warning logs printed by FileSystemPreferences class
 RUN \
-    mkdir -p ${USER_HOME}/.java/.systemPrefs \
+    mkdir -p /etc/.java/.systemPrefs \
     && mkdir -p ${USER_HOME}/.java/.userPrefs \
-    && chmod -R 755 ${USER_HOME}/.java \
-    && chown -R ${USER}:${USER_GROUP} ${USER_HOME}/.java
+    && chmod -R 755 ${USER_HOME}/.java /etc/.java \
+    && chown -R ${USER}:${USER_GROUP} ${USER_HOME}/.java /etc/.java
 
 # copy init script to user home
 COPY --chown=wso2carbon:wso2 docker-entrypoint.sh ${USER_HOME}/
